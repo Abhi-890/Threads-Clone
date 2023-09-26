@@ -2,8 +2,10 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Inter } from "next/font/google";
 
 import "../globals.css";
+import { dark } from "@clerk/themes";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Threads",
   description: "A Next.js 13 Meta Threads Application",
 };
@@ -15,7 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
       <html lang="en">
         <body className={`${inter.className} bg-dark-1`}>{children}</body>
       </html>
